@@ -2,47 +2,64 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
     /**
-     * The attributes that are mass assignable.
+     * Các trường có thể gán hàng loạt (Mass Assignment)
      *
-     * @var list<string>
+     * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'u_name',
+        'u_email',
+        'u_password',
+        'u_phone_number',
+        'u_avatar',
+        'u_active',
+        'u_total_pay',
+        'u_address',
+        'u_about',
+        'u_role',
+        'u_last_login_at',
     ];
 
     /**
-     * The attributes that should be hidden for serialization.
+     * Các trường cần ẩn khi trả về JSON
      *
-     * @var list<string>
+     * @var array<int, string>
      */
     protected $hidden = [
-        'password',
+        'u_password',
         'remember_token',
     ];
 
     /**
-     * Get the attributes that should be cast.
+     * Ép kiểu dữ liệu
      *
      * @return array<string, string>
      */
     protected function casts(): array
     {
         return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
+            'u_email_verified_at' => 'datetime',
+            'u_password'          => 'hashed',
+            'u_active'            => 'boolean',
+            'u_total_pay'         => 'decimal:2',
+            'u_last_login_at'     => 'datetime',
         ];
+    }
+
+    /**
+     * Kiểm tra nếu người dùng có phải là VIP hay không
+     */
+    public function isVip(): bool
+    {
+        return $this->role === 'vip';
     }
 }
