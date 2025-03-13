@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
-        Schema::create('tb_categories', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id(); // Khóa chính tự động tăng
             $table->string('c_name', 150); // Tên danh mục
             $table->string('c_slug', 150)->unique(); // Slug danh mục (duy nhất)
@@ -19,13 +19,13 @@ return new class extends Migration {
             $table->unsignedBigInteger('c_author_id'); // ID admin (tác giả tạo danh mục)
             $table->timestamps(); // created_at & updated_at
 
-            // Thiết lập khóa ngoại liên kết với bảng tb_admins
-            $table->foreign('c_author_id')->references('id')->on('tb_admins')->onDelete('cascade');
+            // Thiết lập khóa ngoại liên kết với bảng admins
+            $table->foreign('c_author_id')->references('id')->on('admins')->onDelete('cascade');
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('tb_categories');
+        Schema::dropIfExists('categories');
     }
 };

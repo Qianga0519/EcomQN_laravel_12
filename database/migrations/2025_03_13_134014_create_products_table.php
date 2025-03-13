@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
-        Schema::create('tb_products', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->id(); // Khóa chính (Primary Key)
 
             $table->string('p_name'); // Tên sản phẩm
@@ -35,12 +35,13 @@ return new class extends Migration {
             $table->text('p_description')->nullable(); // Mô tả ngắn
             $table->longText('p_content')->nullable(); // Nội dung chi tiết
 
-            // Trường phục vụ SEO
-            $table->string('p_description_seo')->nullable(); // Mô tả ngắn cho SEO
-            $table->string('p_key_seo')->nullable(); // Từ khóa SEO
-            $table->string('p_title_seo')->nullable(); // Tiêu đề SEO
 
             $table->string('p_avatar')->nullable(); // Ảnh đại diện sản phẩm
+
+            // Trường phục vụ SEO
+            $table->text('p_description_seo')->nullable(); // Mô tả ngắn cho SEO
+            $table->string('p_key_seo')->nullable(); // Từ khóa SEO
+            $table->string('p_title_seo')->nullable(); // Tiêu đề SEO
 
             $table->timestamps(); // Tạo 2 cột: created_at và updated_at (mốc thời gian)
 
@@ -54,6 +55,6 @@ return new class extends Migration {
     public function down(): void
     {
         // Xóa bảng nếu rollback
-        Schema::dropIfExists('tb_products');
+        Schema::dropIfExists('products');
     }
 };

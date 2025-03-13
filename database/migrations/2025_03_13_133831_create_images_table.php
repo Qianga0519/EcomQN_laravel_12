@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
-        Schema::create('tb_images', function (Blueprint $table) {
+        Schema::create('images', function (Blueprint $table) {
             $table->id(); // Khóa chính tự động tăng
             $table->unsignedBigInteger('im_product_id'); // ID sản phẩm
             $table->string('im_name', 255); // Tên hoặc đường dẫn ảnh
@@ -20,6 +20,6 @@ return new class extends Migration {
 
     public function down(): void
     {
-        Schema::dropIfExists('tb_images');
+        Schema::dropIfExists('images');
     }
 };

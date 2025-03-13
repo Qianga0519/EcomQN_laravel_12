@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
-        Schema::create('tb_articles', function (Blueprint $table) {
+        Schema::create('articles', function (Blueprint $table) {
             $table->id(); // Khóa chính (Primary Key)
 
             $table->string('a_title'); // Tiêu đề bài viết
@@ -25,7 +25,7 @@ return new class extends Migration {
             $table->tinyInteger('a_featured')->default(0); // Bài viết nổi bật (1: Có, 0: Không)
 
             // Trường SEO
-            $table->string('a_description_seo')->nullable(); // Mô tả SEO
+            $table->text('a_description_seo')->nullable(); // Mô tả SEO
             $table->string('a_key_seo')->nullable(); // Từ khóa SEO
             $table->string('a_title_seo')->nullable(); // Tiêu đề SEO
 
@@ -40,6 +40,6 @@ return new class extends Migration {
     public function down(): void
     {
         // Xóa bảng nếu rollback
-        Schema::dropIfExists('tb_articles');
+        Schema::dropIfExists('articles');
     }
 };

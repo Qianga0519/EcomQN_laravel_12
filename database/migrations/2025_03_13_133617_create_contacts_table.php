@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
-        Schema::create('tb_contacts', function (Blueprint $table) {
+        Schema::create('contacts', function (Blueprint $table) {
             $table->id(); // Khóa chính tự động tăng
             $table->string('c_name', 100); // Tên người liên hệ
             $table->string('c_email', 150); // Email liên hệ
@@ -20,6 +20,6 @@ return new class extends Migration {
 
     public function down(): void
     {
-        Schema::dropIfExists('tb_contacts');
+        Schema::dropIfExists('contacts');
     }
 };

@@ -7,24 +7,24 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
-        Schema::create('tb_users', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('phone_number', 15)->unique(); // Số điện thoại duy nhất
-            $table->string('avatar')->nullable(); // Ảnh đại diện
-            $table->boolean('active')->default(true); // Trạng thái kích hoạt
-            $table->string('password', 60); // Mật khẩu mã hóa
-            $table->string('name'); // Tên người dùng
-            $table->string('email')->unique(); // Email duy nhất
-            $table->timestamp('email_verified_at')->nullable(); // Xác thực email
-            $table->decimal('total_pay', 15, 2)->default(0); // Tổng tiền thanh toán
-            $table->text('address')->nullable(); // Địa chỉ
-            $table->text('about')->nullable(); // Giới thiệu
-            $table->enum('role', ['user', 'seller', 'vip'])->default('user'); // Vai trò người dùng
-            $table->timestamp('last_login_at')->nullable(); // Lần đăng nhập gần nhất
+            $table->string('u_phone_number', 15)->unique(); // Số điện thoại duy nhất
+            $table->string('u_avatar')->nullable(); // Ảnh đại diện
+            $table->boolean('u_active')->default(true); // Trạng thái kích hoạt
+            $table->string('u_password', 60); // Mật khẩu mã hóa
+            $table->string('u_name'); // Tên người dùng
+            $table->string('u_email')->unique(); // Email duy nhất
+            $table->timestamp('u_email_verified_at')->nullable(); // Xác thực email
+            $table->decimal('u_total_pay', 15, 2)->default(0); // Tổng tiền thanh toán
+            $table->text('u_address')->nullable(); // Địa chỉ
+            $table->text('u_about')->nullable(); // Giới thiệu
+            $table->enum('u_role', ['user', 'seller', 'vip'])->default('user'); // Vai trò người dùng
+            $table->timestamp('u_last_login_at')->nullable(); // Lần đăng nhập gần nhất
             $table->rememberToken(); // Token duy trì đăng nhập
             $table->timestamps();
 
-            $table->index(['phone_number', 'email']); // Chỉ mục tối ưu
+            $table->index(['u_phone_number', 'u_email']); // Chỉ mục tối ưu
         });
 
 
@@ -39,7 +39,7 @@ return new class extends Migration {
         Schema::create('sessions', function (Blueprint $table) {
             $table->string('id')->primary(); // Khóa chính
             $table->foreignId('user_id')->nullable()
-                ->constrained('tb_users') // Sửa lỗi tên bảng
+                ->constrained('users') // Sửa lỗi tên bảng
                 ->onDelete('cascade'); // Xóa session khi user bị xóa
             $table->string('ip_address', 45)->nullable(); // Địa chỉ IP
             $table->text('user_agent')->nullable(); // Thông tin trình duyệt
@@ -52,6 +52,6 @@ return new class extends Migration {
     {
         Schema::dropIfExists('sessions');
         Schema::dropIfExists('password_reset_tokens');
-        Schema::dropIfExists('tb_users');
+        Schema::dropIfExists('users');
     }
 };
