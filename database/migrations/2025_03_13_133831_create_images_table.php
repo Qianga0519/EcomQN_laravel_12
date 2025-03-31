@@ -9,12 +9,12 @@ return new class extends Migration {
     {
         Schema::create('images', function (Blueprint $table) {
             $table->id(); // Khóa chính tự động tăng
-            $table->unsignedBigInteger('im_product_id'); // ID sản phẩm
-            $table->string('im_name', 255); // Tên hoặc đường dẫn ảnh
+            $table->unsignedBigInteger('product_id'); // ID sản phẩm
+            $table->string('name', 255); // Tên hoặc đường dẫn ảnh
             $table->timestamps(); // created_at & updated_at
 
             // Khóa ngoại liên kết với bảng products
-            $table->foreign('im_product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
         });
     }
 

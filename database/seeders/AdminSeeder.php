@@ -11,10 +11,11 @@ class AdminSeeder extends Seeder
     {
         // Tạo 1 Super Admin cố định
         Admin::factory()->create([
-            'ad_name' => 'Super Admin',
-            'ad_email' => 'superadmin@example.com',
-            'ad_password' => bcrypt('superadmin123'),
-            'ad_active' => true,
+            'name' => 'Super Admin',
+            'email' => 'spdmin@example.com',
+            'password' => bcrypt('spdmin1234'),
+            'active' => true,
+            'phone_number' => '0123456789',
         ]);
         // Tạo 10 admin giả lập
         Admin::factory(10)->create();

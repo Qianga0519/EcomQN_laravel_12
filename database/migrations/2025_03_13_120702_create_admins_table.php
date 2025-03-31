@@ -9,15 +9,15 @@ return new class extends Migration {
     {
         Schema::create('admins', function (Blueprint $table) {
             $table->id();
-            $table->string('ad_name', 50);
-            $table->string('ad_email')->unique();
-            $table->string('ad_password', 60);
-            $table->string('ad_phone_number')->nullable();
-            $table->string('ad_avatar')->nullable();
-            $table->boolean('ad_active')->default(true);
-            $table->enum('ad_role', ['super_admin', 'moderator', 'editor'])->default('moderator'); // Phân quyền
-            $table->timestamp('ad_last_login_at')->nullable(); // Theo dõi hoạt động
-            $table->foreignId('ad_created_by')->nullable()->constrained('admins')->onDelete('set null'); // Ai tạo
+            $table->string('name', 50);
+            $table->string('email')->unique();
+            $table->string('password', 60);
+            $table->string('phone_number')->nullable();
+            $table->string('avatar')->nullable();
+            $table->boolean('active')->default(true);
+            $table->enum('role', ['super_admin', 'moderator', 'editor'])->default('moderator'); // Phân quyền
+            $table->timestamp('last_login_at')->nullable(); // Theo dõi hoạt động
+            $table->foreignId('created_by')->nullable()->constrained('admins')->onDelete('set null'); // Ai tạo
             $table->rememberToken();
             $table->timestamps();
         });

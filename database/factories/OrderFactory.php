@@ -14,10 +14,10 @@ class OrderFactory extends Factory
     public function definition(): array
     {
         return [
-            'or_transaction_id' => Transaction::factory(),
-            'or_user_id' => User::factory(),
-            'or_total_price' => $this->faker->randomFloat(2, 100, 5000),
-            'or_status' => $this->faker->randomElement(['pending', 'completed', 'cancelled']),
+            'transaction_id' => Transaction::factory(),
+            'user_id' => User::factory(),
+            'total_price' => $this->faker->randomFloat(2, 100, 5000),
+            'status' => $this->faker->randomElement(['pending', 'completed', 'cancelled']),
         ];
     }
 }

@@ -13,12 +13,12 @@ class TransactionFactory extends Factory
     public function definition(): array
     {
         return [
-            'tr_user_id' => User::factory(),
-            'tr_total' => $this->faker->randomFloat(2, 100, 5000),
-            'tr_note' => $this->faker->optional()->sentence(),
-            'tr_address' => $this->faker->address(),
-            'tr_phone_number' => $this->faker->phoneNumber(),
-            'tr_status' => $this->faker->randomElement([0, 1]),
+            'user_id' => User::factory(),
+            'total' => $this->faker->randomFloat(2, 100, 5000),
+            'note' => $this->faker->optional()->sentence(),
+            'address' => $this->faker->address(),
+            'phone_number' => $this->faker->phoneNumber(),
+            'status' => $this->faker->randomElement([0, 1]),
         ];
     }
 }

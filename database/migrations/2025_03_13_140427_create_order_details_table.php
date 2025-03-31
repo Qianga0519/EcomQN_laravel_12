@@ -25,18 +25,18 @@ return new class extends Migration {
     {
         Schema::create('order_details', function (Blueprint $table) {
             $table->id(); // Khóa chính tự động tăng
-            $table->unsignedBigInteger('od_order_id'); // Liên kết với orders
-            $table->unsignedBigInteger('od_product_id'); // Liên kết với products
-            $table->integer('od_quantity')->default(1); // Số lượng sản phẩm
-            $table->decimal('od_price', 15, 2); // Giá hiện tại
-            $table->decimal('od_price_old', 15, 2)->nullable(); // Giá cũ (nếu có)
-            $table->integer('od_discount')->default(0); // Phần trăm giảm giá
-            $table->string('od_warranty')->nullable(); // Bảo hành
+            $table->unsignedBigInteger('order_id'); // Liên kết với orders
+            $table->unsignedBigInteger('product_id'); // Liên kết với products
+            $table->integer('quantity')->default(1); // Số lượng sản phẩm
+            $table->decimal('price', 15, 2); // Giá hiện tại
+            $table->decimal('price_old', 15, 2)->nullable(); // Giá cũ (nếu có)
+            $table->integer('discount')->default(0); // Phần trăm giảm giá
+            $table->string('warranty')->nullable(); // Bảo hành
             $table->timestamps(); // created_at & updated_at
 
             // Thiết lập khóa ngoại
-            $table->foreign('od_order_id')->references('id')->on('orders')->onDelete('cascade');
-            $table->foreign('od_product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
         });
     }
 

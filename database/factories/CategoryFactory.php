@@ -13,14 +13,14 @@ class CategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'c_name' => $this->faker->word(),
-            'c_slug' => $this->faker->slug(),
-            'c_icon' => $this->faker->optional()->word(),
-            'c_avatar' => $this->faker->optional()->imageUrl(300, 300),
-            'c_active' => $this->faker->boolean(),
-            'c_total_product' => $this->faker->numberBetween(0, 100),
-            'c_home' => $this->faker->boolean(),
-            'c_author_id' => Admin::factory(),
+            'name' => $this->faker->word(),
+            'slug' => $this->faker->slug(),
+            'icon' => $this->faker->optional()->word(),
+            'avatar' => $this->faker->optional()->imageUrl(300, 300),
+            'active' => $this->faker->boolean(),
+            'total_product' => $this->faker->numberBetween(0, 100),
+            'home' => $this->faker->boolean(),
+            'author_id' => Admin::factory(),
         ];
     }
 }

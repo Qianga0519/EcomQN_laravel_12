@@ -13,8 +13,8 @@ class ImageFactory extends Factory
     public function definition(): array
     {
         return [
-            'im_product_id' => Product::factory(),
-            'im_name' => $this->faker->imageUrl(640, 480, 'products'),
+            'product_id' => Product::factory(),
+            'name' => $this->faker->imageUrl(640, 480, 'products'),
         ];
     }
 }
