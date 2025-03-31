@@ -1,14 +1,12 @@
-@extends('layouts.app')
-
-
+@extends('frontend.layouts.app')
 @section('content')
     <!-- Product Filters and Listing -->
     <section class="product-listing my-4">
         <div class="container-xl">
             <div class="row">
-              @include('components.products/product-filter')
+                @include('frontend.components.product.product-filters')
                 <!-- Product Grid -->
-                @include('components.products/product-grid')
+                @include('frontend.components.product.product-grid')
             </div>
         </div>
     </section>

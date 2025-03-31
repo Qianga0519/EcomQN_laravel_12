@@ -1,8 +1,8 @@
 <!-- Header end -->
-@extends('layouts.app')
+@extends('frontend.layouts.app')
 @section('title', 'Wishlist')
 @section('content')
-  @include('components.wishlist.list-item')
+  @include('frontend.components.wishlist.list-item')
     <script>
         // Add event listeners to all quantity control buttons
         document.addEventListener('DOMContentLoaded', function() {

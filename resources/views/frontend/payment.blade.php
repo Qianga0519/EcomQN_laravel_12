@@ -1,10 +1,10 @@
-@extends('layouts.app')
+@extends('frontend.layouts.app')
 @section('title', 'Payment')
 @section('content')
     <!-- End of header section -->
     <!-- Header end -->
 
-    @include('components.payment.payment-content')
+    @include('frontend.components.payment.payment')
 
     <script>
         // Add event listeners to all quantity control buttons

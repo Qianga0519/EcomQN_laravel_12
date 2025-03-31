@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('frontend.layouts.app')
 @section('title', 'Support')
 @section('content')
-   @include('components.support.support-content') 
+   @include('frontend.components.support.support')
     <script>
         // Add event listeners to all quantity control buttons
         document.addEventListener('DOMContentLoaded', function() {

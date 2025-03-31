@@ -1,8 +1,8 @@
-@extends('layouts.app')
+@extends('frontend.layouts.app')
 @section('title', 'Cart')
 @section('content')
     <!-- Cart Section -->
-    @include('components.cart.list-item')
+    @include('frontend.components.cart.list-item')
     <!-- End of cart section -->
 
     <script>

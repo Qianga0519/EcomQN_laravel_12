@@ -179,45 +179,35 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="firstNameInput" placeholder="First Name"
+                                <input type="name" class="form-control" id="nameInput" placeholder="name@example.com"
                                     required>
-                                <label for="firstNameInput">First Name</label>
+                                <label for="nameInput">Name</label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="lastNameInput" placeholder="Last Name"
-                                    required>
-                                <label for="lastNameInput">Last Name</label>
+                                <input type="tel" class="form-control" id="phoneInput" placeholder="Phone Number">
+                                <label for="phoneInput">Phone Number (optional)</label>
                             </div>
                         </div>
                     </div>
-
                     <div class="form-floating">
                         <input type="email" class="form-control" id="emailInput" placeholder="name@example.com"
                             required>
                         <label for="emailInput">Email address</label>
                     </div>
 
-                    <div class="form-floating">
-                        <input type="tel" class="form-control" id="phoneInput" placeholder="Phone Number">
-                        <label for="phoneInput">Phone Number (optional)</label>
-                    </div>
+
 
                     <div class="form-floating position-relative">
                         <input type="password" class="form-control" id="passwordInput" placeholder="Password" required
-                            minlength="8" onkeyup="checkPasswordStrength()">
+                            minlength="8">
                         <label for="passwordInput">Password</label>
                         <span class="password-toggle"
                             onclick="togglePasswordVisibility('passwordInput', 'togglePassword')">
                             <i class="bi bi-eye" id="togglePassword"></i>
                         </span>
                     </div>
-
-                    <div class="password-strength bg-secondary opacity-25" id="passwordStrength"></div>
-                    <div class="small text-muted mb-3" id="passwordFeedback">Password must be at least 8 characters
-                    </div>
-
                     <div class="form-floating position-relative">
                         <input type="password" class="form-control" id="confirmPasswordInput"
                             placeholder="Confirm Password" required>
@@ -285,88 +275,6 @@
                 toggleIcon.classList.replace('bi-eye-slash', 'bi-eye');
             }
         }
-
-        // Check password strength
-        function checkPasswordStrength() {
-            const password = document.getElementById('passwordInput').value;
-            const strengthBar = document.getElementById('passwordStrength');
-            const feedback = document.getElementById('passwordFeedback');
-
-            // Reset the strength bar
-            strengthBar.style.width = '0%';
-            strengthBar.className = 'password-strength';
-
-            if (password.length === 0) {
-                feedback.textContent = 'Password must be at least 8 characters';
-                return;
-            }
-
-            // Calculate strength
-            let strength = 0;
-
-            // Length check
-            if (password.length >= 8) strength += 25;
-
-            // Character variety checks
-            if (/[A-Z]/.test(password)) strength += 25; // Uppercase
-            if (/[a-z]/.test(password)) strength += 25; // Lowercase
-            if (/[0-9]/.test(password)) strength += 15; // Numbers
-            if (/[^A-Za-z0-9]/.test(password)) strength += 10; // Special characters
-
-            // Update the strength bar
-            strengthBar.style.width = strength + '%';
-
-            // Update color and feedback based on strength
-            if (strength < 40) {
-                strengthBar.classList.add('bg-danger');
-                feedback.textContent = 'Weak password';
-            } else if (strength < 70) {
-                strengthBar.classList.add('bg-warning');
-                feedback.textContent = 'Moderate password';
-            } else {
-                strengthBar.classList.add('bg-success');
-                feedback.textContent = 'Strong password';
-            }
-        }
-
-        // Form submission
-        document.getElementById('registerForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            const password = document.getElementById('passwordInput').value;
-            const confirmPassword = document.getElementById('confirmPasswordInput').value;
-            const alertElement = document.getElementById('registerAlert');
-
-            // Check if passwords match
-            if (password !== confirmPassword) {
-                document.getElementById('alertMessage').textContent = 'Passwords do not match';
-                alertElement.classList.remove('d-none');
-                alertElement.classList.add('alert-danger');
-                alertElement.classList.remove('alert-success');
-
-                // Hide alert after 3 seconds
-                setTimeout(() => {
-                    alertElement.classList.add('d-none');
-                }, 3000);
-
-                return;
-            }
-
-            // If validation passes, simulate successful registration
-            // In a real application, you would send this data to your server
-
-            // Show success message
-            alertElement.classList.remove('alert-danger');
-            alertElement.classList.add('alert-success');
-            document.getElementById('alertMessage').textContent =
-                'Registration successful! Redirecting to login...';
-            alertElement.classList.remove('d-none');
-
-            // Redirect to login page after 2 seconds
-            setTimeout(() => {
-                window.location.href = 'login.html';
-            }, 2000);
-        });
     </script>
 </body>
 

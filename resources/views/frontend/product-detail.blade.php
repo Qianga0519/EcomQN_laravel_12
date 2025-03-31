@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('frontend.layouts.app')
 @section('title', 'product-detail')
 @section('content')
     <!-- Breadcrumb Navigation -->
-    @include('components.breadcrumb')
-    @include('components.product-detail.detail')
+    @include('frontend.components.breadcrumb')
+    @include('frontend.components.product-detail.detail')
     <script>
         // Color selection
         document.querySelectorAll('.color-option').forEach(color => {

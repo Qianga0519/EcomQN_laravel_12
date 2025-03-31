@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('frontend.layouts.app')
 @section('title', 'Profile')
 @section('content')
-        <!-- Header end -->
-       @include('components.profile.profile-content')
-        <!-- Footer start -->
+    <!-- Header end -->
+    @include('frontend.auth.profile.profile')
+    <!-- Footer start -->
 @endsection
