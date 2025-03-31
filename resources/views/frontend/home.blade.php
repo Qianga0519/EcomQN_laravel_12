@@ -2,7 +2,7 @@
 
 @section('title', 'Trang chủ - ShopName')
 @section('content')
-    <!-- Hero start -->
+    {{-- <!-- Hero start -->
     @include('components.home.hero')
     <!-- Hero end -->
     <!-- Category start -->
@@ -13,5 +13,5 @@
     <!-- Flash sale  end -->
     <!-- Product start -->
     @include('components.home.product')
-    <!-- Product end -->
+    <!-- Product end --> --}}
 @endsection
