@@ -16,17 +16,17 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'u_name',
-        'u_email',
-        'u_password',
-        'u_phone_number',
-        'u_avatar',
-        'u_active',
-        'u_total_pay',
-        'u_address',
-        'u_about',
-        'u_role',
-        'u_last_login_at',
+        'name',
+        'email',
+        'password',
+        'phone_number',
+        'avatar',
+        'active',
+        'total_pay',
+        'address',
+        'about',
+        'role',
+        'last_login_at',
     ];
 
     /**
@@ -35,7 +35,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'u_password',
+        'password',
         'remember_token',
     ];
 
@@ -47,11 +47,11 @@ class User extends Authenticatable
     protected function casts(): array
     {
         return [
-            'u_email_verified_at' => 'datetime',
-            'u_password'          => 'hashed',
-            'u_active'            => 'boolean',
-            'u_total_pay'         => 'decimal:2',
-            'u_last_login_at'     => 'datetime',
+            'email_verified_at' => 'datetime',
+            'password'          => 'hashed',
+            'active'            => 'boolean',
+            'total_pay'         => 'decimal:2',
+            'last_login_at'     => 'datetime',
         ];
     }
 

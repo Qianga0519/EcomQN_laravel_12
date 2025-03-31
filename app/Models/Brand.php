@@ -18,18 +18,18 @@ class Brand extends Model
     // Các trường được phép gán hàng loạt
     protected $fillable = [
         'admin_id',
-        's_name',
-        'c_email',
-        'c_phone',
-        'c_fax',
-        'c_website',
-        'c_logo',
-        'c_status',
+        'name',
+        'email',
+        'phone',
+        'fax',
+        'website',
+        'logo',
+        'status',
     ];
 
     // Kiểu dữ liệu được ép kiểu
     protected $casts = [
-        'c_status' => 'boolean',
+        'status' => 'boolean',
     ];
 
     /**

@@ -14,13 +14,13 @@ class OrderDetail extends Model
 
     // Các thuộc tính có thể gán hàng loạt (Mass Assignment)
     protected $fillable = [
-        'od_order_id',
-        'od_product_id',
-        'od_quantity',
-        'od_price',
-        'od_price_old',
-        'od_discount',
-        'od_warranty',
+        'order_id',
+        'product_id',
+        'quantity',
+        'price',
+        'price_old',
+        'discount',
+        'warranty',
     ];
 
     /**
@@ -28,7 +28,7 @@ class OrderDetail extends Model
      */
     public function order()
     {
-        return $this->belongsTo(Order::class, 'od_order_id');
+        return $this->belongsTo(Order::class, 'order_id');
     }
 
     /**
@@ -36,6 +36,6 @@ class OrderDetail extends Model
      */
     public function product()
     {
-        return $this->belongsTo(Product::class, 'od_product_id');
+        return $this->belongsTo(Product::class, 'product_id');
     }
 }

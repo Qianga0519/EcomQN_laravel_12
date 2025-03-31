@@ -10,24 +10,24 @@ class Admin extends Authenticatable
 {
     use HasFactory, Notifiable;
     protected $fillable = [
-        'ad_name',
-        'ad_email',
-        'ad_password',
-        'ad_phone_number',
-        'ad_avatar',
-        'ad_active',
-        'ad_role',
-        'ad_created_by',
+        'name',
+        'email',
+        'password',
+        'phone_number',
+        'avatar',
+        'active',
+        'role',
+        'created_by',
     ];
 
 
     protected $hidden = [
-        'ad_password',
+        'password',
         'remember_token',
     ];
 
     protected $casts = [
-        'ad_active' => 'boolean',
+        'active' => 'boolean',
     ];
     public function products()
     {

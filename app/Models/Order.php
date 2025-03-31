@@ -15,15 +15,15 @@ class Order extends Model
 
     // Các trường có thể gán hàng loạt (Mass Assignment)
     protected $fillable = [
-        'or_transaction_id',
-        'or_user_id',
-        'or_total_price',
-        'or_status',
+        'transaction_id',
+        'user_id',
+        'total_price',
+        'status',
     ];
 
     // Ép kiểu cho các trường
     protected $casts = [
-        'or_total_price' => 'decimal:2',
+        'total_price' => 'decimal:2',
     ];
 
     // Danh sách trạng thái đơn hàng
@@ -36,7 +36,7 @@ class Order extends Model
      */
     public function isCompleted(): bool
     {
-        return $this->or_status === self::STATUS_COMPLETED;
+        return $this->status === self::STATUS_COMPLETED;
     }
 
     /**
@@ -44,7 +44,7 @@ class Order extends Model
      */
     public function transaction()
     {
-        return $this->belongsTo(Transaction::class, 'or_transaction_id');
+        return $this->belongsTo(Transaction::class, 'transaction_id');
     }
 
     /**
@@ -52,16 +52,16 @@ class Order extends Model
      */
     public function user()
     {
-        return $this->belongsTo(User::class, 'or_user_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
     public function orderDetails()
     {
-        return $this->hasMany(OrderDetail::class, 'od_order_id');
+        return $this->hasMany(OrderDetail::class, 'order_id');
     }
 
     public function products()
     {
-        return $this->belongsToMany(Product::class, 'order_details', 'od_order_id', 'od_product_id');
+        return $this->belongsToMany(Product::class, 'order_details', 'order_id', 'product_id');
     }
 
 }

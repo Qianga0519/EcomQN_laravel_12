@@ -14,18 +14,18 @@ class Transaction extends Model
 
     // Các trường có thể gán hàng loạt (Mass Assignment)
     protected $fillable = [
-        'tr_user_id',
-        'tr_total',
-        'tr_note',
-        'tr_address',
-        'tr_phone_number',
-        'tr_status',
+        'user_id',
+        'total',
+        'note',
+        'address',
+        'phone_number',
+        'status',
     ];
 
     // Ép kiểu cho các trường
     protected $casts = [
-        'tr_total'  => 'decimal:2',
-        'tr_status' => 'integer',
+        'total'  => 'decimal:2',
+        'status' => 'integer',
     ];
 
     // Trạng thái giao dịch
@@ -35,15 +35,15 @@ class Transaction extends Model
     // Liên kết với người dùng (User)
     public function user()
     {
-        return $this->belongsTo(User::class, 'tr_user_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
     public function orders()
     {
-        return $this->hasOne(Order::class, 'od_transaction_id');
+        return $this->hasOne(Order::class, 'transaction_id');
     }
     // Kiểm tra giao dịch đã hoàn thành chưa
     public function isCompleted(): bool
     {
-        return $this->tr_status === self::STATUS_COMPLETED;
+        return $this->status === self::STATUS_COMPLETED;
     }
 }

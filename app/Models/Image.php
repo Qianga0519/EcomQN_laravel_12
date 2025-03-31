@@ -14,8 +14,8 @@ class Image extends Model
 
     // Các cột có thể gán giá trị
     protected $fillable = [
-        'im_product_id',
-        'im_name',
+        'product_id',
+        'name',
     ];
 
     /**
@@ -24,6 +24,6 @@ class Image extends Model
      */
     public function product()
     {
-        return $this->belongsTo(Product::class, 'im_product_id');
+        return $this->belongsTo(Product::class, 'product_id');
     }
 }

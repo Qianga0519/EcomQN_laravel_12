@@ -22,11 +22,11 @@ class Contact extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'c_name',
-        'c_email',
-        'c_title',
-        'c_content',
-        'c_status',
+        'name',
+        'email',
+        'title',
+        'content',
+        'status',
     ];
 
     /**
@@ -34,7 +34,7 @@ class Contact extends Model
      */
     public function scopePending($query)
     {
-        return $query->where('c_status', 0);
+        return $query->where('status', 0);
     }
 
     /**
@@ -42,7 +42,7 @@ class Contact extends Model
      */
     public function scopeProcessed($query)
     {
-        return $query->where('c_status', 1);
+        return $query->where('status', 1);
     }
 
     /**
@@ -50,6 +50,6 @@ class Contact extends Model
      */
     public function markAsProcessed(): void
     {
-        $this->update(['c_status' => 1]);
+        $this->update(['status' => 1]);
     }
 }
