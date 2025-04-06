@@ -3,6 +3,34 @@
 use Illuminate\Support\Str;
 
 return [
+    // // Thêm cấu hình cho Admin và User
+    // 'guards' => [
+    //     'web' => [
+    //         'driver' => 'session',
+    //         'provider' => 'users',
+    //     ],
+    //     'admin' => [
+    //         'driver' => 'session',
+    //         'provider' => 'admins',
+    //     ],
+    // ],
+
+    // 'session' => [
+    //     'driver' => env('SESSION_DRIVER', 'file'),
+    //     'lifetime' => env('SESSION_LIFETIME', 1440),  // Defaul for user session 1 day
+
+    //     'expire_on_close' => false,
+    //     'encrypt' => false,
+
+    //     // session guard
+    //     'cookie' => env('SESSION_COOKIE', 'laravel_session'),
+
+    //     // Guard session lifetime
+    //     'admin_lifetime' => 60 * 2, // Admin session 2 hours
+    //     'user_lifetime' => 60 * 24 * 1, // User session 1 day
+    // ],
+    // config/session.php
+
 
     /*
     |--------------------------------------------------------------------------
@@ -32,9 +60,12 @@ return [
     |
     */
 
-    'lifetime' => (int) env('SESSION_LIFETIME', 120),
+    'lifetime' => (int) env('SESSION_LIFETIME', 120), //minutes
 
     'expire_on_close' => env('SESSION_EXPIRE_ON_CLOSE', false),
+
+
+    // 'encrypt' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -129,7 +160,7 @@ return [
 
     'cookie' => env(
         'SESSION_COOKIE',
-        Str::slug(env('APP_NAME', 'laravel'), '_').'_session'
+        Str::slug(env('APP_NAME', 'laravel'), '_') . '_session'
     ),
 
     /*

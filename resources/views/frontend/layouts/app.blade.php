@@ -12,6 +12,8 @@
 </head>
 
 <body>
+    @include('notifications.alert-all-errors')
+
     <main>
         @include('frontend.components.header')
         @yield('content')

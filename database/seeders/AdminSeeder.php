@@ -12,8 +12,8 @@ class AdminSeeder extends Seeder
         // Tạo 1 Super Admin cố định
         Admin::factory()->create([
             'name' => 'Super Admin',
-            'email' => 'spdmin@example.com',
-            'password' => bcrypt('spdmin1234'),
+            'email' => 'spadmin@example.com',
+            'password' => bcrypt('spadmin1234'),
             'active' => true,
             'phone_number' => '0123456789',
         ]);
